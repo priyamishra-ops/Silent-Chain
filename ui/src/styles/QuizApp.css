@@ -1,0 +1,349 @@
+.quiz-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  width: 100%;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+  margin: 0 0 0.75rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin: 0 0 0.5rem;
+  font-weight: 700;
+  color: var(--ink-strong);
+}
+
+.hero-subtitle {
+  max-width: 520px;
+  margin: 0;
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+}
+
+.hero-badge {
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  min-width: 180px;
+}
+
+.hero-badge span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-muted);
+}
+
+.hero-badge strong {
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.quiz-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr);
+  gap: 2rem;
+}
+
+.quiz-card,
+.status-card {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(25, 22, 21, 0.08);
+}
+
+.quiz-card {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.card-header p {
+  margin: 0.35rem 0 0;
+  color: var(--ink-muted);
+}
+
+.answer-count {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.question-block {
+  padding: 1.25rem;
+  border-radius: 18px;
+  background: var(--surface-muted);
+  border: 1px solid rgba(25, 22, 21, 0.05);
+  animation: fadeUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.question-prompt {
+  margin: 0 0 1rem;
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+.question-prompt span {
+  color: var(--accent);
+}
+
+.options-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.option-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease, box-shadow 0.2s ease;
+  background: #fffdf9;
+}
+
+.option-card input {
+  accent-color: var(--accent);
+}
+
+.option-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(15, 118, 110, 0.18);
+  border-color: rgba(15, 118, 110, 0.35);
+}
+
+.option-card.selected {
+  border-color: var(--accent);
+  background: rgba(198, 237, 230, 0.5);
+}
+
+.option-index {
+  font-weight: 600;
+  color: var(--accent);
+  background: rgba(15, 118, 110, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: 8px;
+}
+
+.option-text {
+  color: var(--ink-strong);
+}
+
+.actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button {
+  border-radius: 999px;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.primary-button {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(15, 118, 110, 0.35);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.primary-button:hover:not(:disabled),
+.secondary-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  background: rgba(15, 118, 110, 0.12);
+  color: var(--accent-strong);
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  width: 100%;
+}
+
+.ghost-button {
+  background: transparent;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+}
+
+.footnote {
+  margin-top: 1rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+.status-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.status-card h4 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+}
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.status-error {
+  margin-top: 1rem;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
+
+.highlight-card {
+  background: linear-gradient(160deg, rgba(15, 118, 110, 0.12), rgba(255, 255, 255, 0.8));
+}
+
+.score-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.score-line code {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  color: var(--ink-strong);
+}
+
+.decrypted-results {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.decrypted-results span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.decrypted-results strong {
+  font-size: 1.2rem;
+  color: var(--ink-strong);
+}
+
+.error-card {
+  border: 1px solid rgba(185, 28, 28, 0.3);
+  background: rgba(254, 226, 226, 0.7);
+}
+
+.success-card {
+  border: 1px solid rgba(15, 118, 110, 0.25);
+  background: rgba(198, 237, 230, 0.5);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 980px) {
+  .quiz-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .quiz-content {
+    padding: 2rem 1.2rem 3rem;
+  }
+
+  .actions-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-badge {
+    width: 100%;
+    align-items: flex-start;
+  }
+}
